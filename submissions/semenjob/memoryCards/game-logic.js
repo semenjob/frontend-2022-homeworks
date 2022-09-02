@@ -6,16 +6,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 const startGameBtn = document.querySelector(".start");
-const resetGame = document.querySelector(".reset");
+const resetGameBtn = document.querySelector(".reset");
 
 const toggleFlip = (card) => {
   if (card !== null) {
     card.classList.toggle("flip");
+    card.classList.toggle("block");
   }
   return;
 };
-
-let winGame = 0;
 
 const initMemoryCardIndexes = (n) => {
   return Array(n)
@@ -101,6 +100,7 @@ function startGame() {
       setTimeout(() => {
         this.cards.forEach((cards) => {
           cards.classList.remove("flip");
+          cards.classList.remove("block");
         });
         this.cards = [];
       }, 1000);
@@ -116,7 +116,7 @@ function startGame() {
     });
   };
 
-  resetGame.addEventListener("click", () => {
+  resetGameBtn.addEventListener("click", () => {
     winGameAutoReset();
   });
 
